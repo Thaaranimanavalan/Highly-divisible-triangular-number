@@ -1,0 +1,23 @@
+from math import comb
+data=input().split()
+n=int(data[0])
+k=int(data[1])
+
+count=0
+for i in range(2,n+1):
+    r=(i+1)//2
+    if comb(i,r)>k:
+        if i%2==0:
+            count+=1
+            r=r-1
+        else:
+            count+=2
+            r=r-2
+
+        while comb(i,r)>k:
+            count+=2
+            r+=-1
+            if r<0:
+                break
+
+print(count)
